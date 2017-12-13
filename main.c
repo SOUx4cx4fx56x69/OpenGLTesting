@@ -4,7 +4,7 @@
 #include<stdio.h>
 
 #define NAMEWINDOW "OpenGLTesting"
-short sizeRect = 100; // global var is shit of course
+float sizeRect = 100; // global var is shit of course
 
 
 void updateScreen(int value){
@@ -14,14 +14,15 @@ glutTimerFunc using pointer to function void (*func)(int value);
 //printf("update\n");
 glutPostRedisplay();
 //printf("Updated \n");
-glutTimerFunc(200, updateScreen, 0); // loop update
+glutTimerFunc(20*100, updateScreen, 0); // loop update
 }
 
 void EventKeydown(char unsigned key, int x, int y){ // x,y mouse location
 	printf("EVENT: %c(%d) ; mouse coords %d:%d\n",key,key,x,y);
-	if(key == 's') sizeRect--;
-	else if(key == 'w') sizeRect++; 
-	printf("sizeRect %d\n",sizeRect);
+	if(key == 's') sizeRect-=0.1;
+	else if(key == 'w') sizeRect+=0.1; 
+	else if(key == 27) sizeRect=100;
+	printf("sizeRect %f\n",sizeRect);
 //	glutPostRedisplay(); // redisplay window, without this you don't see update
 }
 
