@@ -73,12 +73,12 @@ void render(void){
 void main(int argumentscount, char ** arguments){
 	glutInit(&argumentscount,arguments);
 	glutInitWindowSize(640,480);
-	glutInitDisplayMode(GLUT_DOUBLE);
-	glutCreateWindow(NAMEWINDOW);
+	glutInitDisplayMode(GLUT_DOUBLE); // Double Buffer for Window https://www.opengl.org/resources/libraries/glut/spec3/node12.html
+	glutCreateWindow(NAMEWINDOW); // CreateWindow with title (NAMEWINDOW)
 
 	glutDisplayFunc(render);
 	glutKeyboardFunc(EventKeydown);//funcion at C is pointers default also as arrays
-	glutTimerFunc(200, updateScreen, 0);
+	glutTimerFunc(200, updateScreen, 0); // use updateScreen function after 200 ms with 0 as first argument
 
 	glutMainLoop();
 }
